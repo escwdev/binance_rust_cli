@@ -1,0 +1,6 @@
+[package]
+name = "binance-rust-cli"
+version = "0.1.0"
+authors = ["Eric <eric.abrahams@e-systemsconsulting.com>"]
+
+[dependencies]
