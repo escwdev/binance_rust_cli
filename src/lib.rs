@@ -1,7 +1,3 @@
-use std::error::Error;
-use std::io::prelude::*;
-use std::env;
-
 #[derive(Debug)]
 pub struct Binance {
     pub query: String,
@@ -13,7 +9,7 @@ impl Binance {
 
         let query = match args.next() {
             Some(arg) => arg,
-            None => return Err("Didn't get a pair query"),
+            None => return Err("didn't get a pair to return"),
         };
 
         Ok(Binance{query})

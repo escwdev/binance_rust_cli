@@ -1,5 +1,6 @@
 extern crate binance_rust_cli;
 extern crate reqwest;
+extern crate term;
 
 #[macro_use]
 extern crate serde_derive;
@@ -29,9 +30,15 @@ fn main() {
     response.read_to_string(&mut buf).expect("Failed to read response");
     let array: Vec<Ticker> = serde_json::from_str(&buf).unwrap();
 
+    let mut t = term::stdout().unwrap();
+
     for elem in array.iter() {
         if binance.query.to_uppercase() == elem.symbol { 
-            println!("Symbol: {:?}, Price: {:?}", elem.symbol, elem.price) 
+            t.attr(term::Attr::Bold).unwrap();
+            t.fg(term::color::CYAN).unwrap();
+            println!("Symbol: {:?}", elem.symbol);
+            t.fg(term::color::YELLOW).unwrap();
+            println!("Price: {:?}", elem.price); 
        };
     }
 }
