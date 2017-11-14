@@ -1,5 +1,5 @@
 [package]
-name = "binance-rust-cli"
+name = "binance_rust_cli"
 version = "0.1.0"
 authors = ["Eric <eric.abrahams@e-systemsconsulting.com>"]
 
