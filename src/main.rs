@@ -9,8 +9,6 @@ use std::io::Read;
 use std::env;
 use std::process;
 
-use binance_rust_cli::Config;
-
 #[derive(Debug, Deserialize)]
 struct Ticker {
     symbol: String,
@@ -20,8 +18,8 @@ struct Ticker {
 const TICKER_URL: &'static str = "https://www.binance.com/api/v1/ticker/allPrices";
 
 fn main() {
-    let config = binance_rust_cli::Config::new(env::args()).unwrap_or_else(|err| {
-        eprintln!("Probplem parsing arguments: {}", err);
+    let binance = binance_rust_cli::Binance::new(env::args()).unwrap_or_else(|err| {
+        eprintln!("Problem parsing arguments: {}", err);
         process::exit(1);
     });
 
@@ -32,6 +30,8 @@ fn main() {
     let array: Vec<Ticker> = serde_json::from_str(&buf).unwrap();
 
     for elem in array.iter() {
-        println!("{:?}", elem);
+        if binance.query.to_uppercase() == elem.symbol { 
+            println!("Symbol: {:?}, Price: {:?}", elem.symbol, elem.price) 
+       };
     }
 }
