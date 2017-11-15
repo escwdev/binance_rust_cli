@@ -33,7 +33,7 @@ fn main() {
     let mut t = term::stdout().unwrap();
 
     for elem in array.iter() {
-        if binance.query.to_uppercase() == elem.symbol { 
+        if binance.symbol.to_uppercase() == elem.symbol { 
             t.attr(term::Attr::Bold).unwrap();
             t.fg(term::color::CYAN).unwrap();
             println!("Symbol: {:?}", elem.symbol);
