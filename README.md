@@ -1,4 +1,4 @@
-# binance__rust__cli
+# binance\_rust\_cli
 
 This is a simple command line tool for accessing the Binance Cryptocurrency Exchange's public API.
 
@@ -21,6 +21,7 @@ This returns and prints to bash the symbol and current pair listed. It is case i
 - Include `clap` and more comprehensive command line functionality
 - Better and more descriptive Error control
 - Testing
+- Publish to crate.io
 
 # License
 
